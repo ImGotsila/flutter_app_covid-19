@@ -1,11 +1,11 @@
 import 'package:covid_19/constants.dart';
 import 'package:covid_19/models/DogService.dart';
+import 'package:covid_19/models/DogServiceAll.dart';
 import 'package:covid_19/models/character_data.dart';
 import 'package:covid_19/screens/details_screen.dart';
 import 'package:covid_19/widgets/info_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:dio/dio.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -18,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     DogService.randomDog();
+    DogServiceAll.randomDog();
   }
 
   @override
@@ -83,28 +84,28 @@ class _HomeScreenState extends State<HomeScreen> {
                     InfoCard(
                       title: "New Recovered",
                       icon: "assets/icons/isolation.svg",
-                      iconColor: Color(0xFF50E3C2),
+                      iconColor: Color(0xFF50E358),
                       effectedNum: this.newRecovered,
                       press: () {},
                     ),
                     InfoCard(
                       title: "Total Hospitalized",
-                      icon: "assets/icons/isolation.svg",
-                      iconColor: Color(0xFF50E3C2),
+                      icon: "assets/icons/hospital.svg",
+                      iconColor: Color(0xFFFF2D55),
                       effectedNum: this.hospitalized,
                       press: () {},
                     ),
                     InfoCard(
                       title: "New Hospitalized",
                       icon: "assets/icons/isolation.svg",
-                      iconColor: Color(0xFF50E3C2),
+                      iconColor: Color(0xFF5856D6),
                       effectedNum: this.newHospitalized,
                       press: () {},
                     ),
                     InfoCard(
                       title: "New Cases",
                       icon: "assets/icons/emoji_sick.svg",
-                      iconColor: Color(0xFF5856D6),
+                      iconColor: Color(0xFFFF2D55),
                       effectedNum: this.newDeaths,
                       press: () {
                         Navigator.push(
@@ -128,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "Preventions",
+                        "วิธีป้องกัน",
                         style: Theme.of(context)
                             .textTheme
                             .title
@@ -156,15 +157,15 @@ class _HomeScreenState extends State<HomeScreen> {
       children: <Widget>[
         PreventitonCard(
           svgSrc: "assets/icons/hand_wash.svg",
-          title: "Wash Hands",
+          title: "ล้างมือ",
         ),
         PreventitonCard(
           svgSrc: "assets/icons/use_mask.svg",
-          title: "Use Masks",
+          title: "ใส้แมส",
         ),
         PreventitonCard(
           svgSrc: "assets/icons/Clean_Disinfect.svg",
-          title: "Clean Disinfect",
+          title: "กำจัดเชื้อโรค",
         ),
       ],
     );
@@ -180,11 +181,11 @@ class _HomeScreenState extends State<HomeScreen> {
           Container(
             padding: EdgeInsets.only(
               // left side padding is 40% of total width
-              left: MediaQuery.of(context).size.width * .4,
-              top: 20,
-              right: 20,
+              left: MediaQuery.of(context).size.width * .45,
+              top: 7,
+              right: 5,
             ),
-            height: 130,
+            height: 170,
             width: double.infinity,
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -193,20 +194,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   Color(0xFF1B8D59),
                 ],
               ),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
             ),
             child: RichText(
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: "Dial 999 for \nMedical Help!\n",
+                    text: "มีอาการไข้หรือ\nอาการทางเดินหายใจ",
                     style: Theme.of(context)
                         .textTheme
                         .title
                         .copyWith(color: Colors.white),
                   ),
                   TextSpan(
-                    text: "If any symptoms appear",
+                    text: "\nเช่น ไอ เจ็บคอ ปวดหัว อ่อนเพลีย หายใจเหนื่อยหอบ ให้สวมหน้ากากอนามัย และรีบไปพบแพทย์ทันที",
                     style: TextStyle(
                       color: Colors.white.withOpacity(0.7),
                     ),
@@ -216,11 +217,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: SvgPicture.asset("assets/icons/nurse.svg"),
           ),
           Positioned(
-            top: 30,
+            top: 10,
             right: 10,
             child: SvgPicture.asset("assets/icons/virus.svg"),
           ),
